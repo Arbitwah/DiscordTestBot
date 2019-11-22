@@ -2,7 +2,7 @@
 //srequire('dotenv').config(); //Dotenv is a zero-dependency module that loads environment variables from a .env file into proccess.env
 //Gregory Pugh 
 const Discord = require('discord.js');
-const{prefix, token} = require('./config.json');
+const{prefix, token, tester} = require('./config.json');
 const fs = require('fs');
 const client = new Discord.Client();
 client.command = new Discord.Collection();
@@ -30,9 +30,15 @@ const command = args.shift().toLowerCase();
 
 if(command === 'tester'){
     const guildmem = msg.member;
-    guildmem.addRole('---');
+    guildmem.addRole(tester);
     msg.channel.send(msg.member +' has been added to the tester channel');
     
+}
+
+if(command ==='stoptest'){
+    const guildmem = msg.member;
+    guildmem.removeRole(tester);
+    msg.channel.send(msg.member + 'has been removed from the tester channel');
 }
 });
 
