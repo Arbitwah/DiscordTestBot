@@ -1,9 +1,11 @@
 module.exports = {
     name: 'ping',
-    description:'Ping!',
+    description:'sends the message pong to the user',
     execute(msg,args){
-        msg.reply('pong');
-        msg.channel.send('PONG');
+      
+     if(args[0]==='ping'){
+            return msg.channel.send('pong');
+        }
     }
 };
 
