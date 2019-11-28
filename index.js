@@ -22,10 +22,11 @@ client.on('message',msg=>{
     if(!client.commands.has(command)) return;
 
     try{
-        client.commands.get(command).execute(msg,args);
+        client.commands.get(command).execute(msg,client,args);
     }catch (error){
-        console.error(error);
+        console.info(error);
         msg.reply('There was an error trying to execute that command!');
+        client.destroy();
     }
     // if(command==='ping'){
     //     msg.channel.send('pong');
@@ -52,6 +53,5 @@ client.on('message',msg=>{
 //     msg.channel.send(msg.member + 'has been removed from the tester channel');
 // }
 // });
-
 
 client.login(token);
